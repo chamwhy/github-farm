@@ -22,3 +22,38 @@ app.loader.add("sua", "img/sua.jpg").load((loader, resources) => {
     sua.rotation += 0.01;
   });
 });
+
+class Game {
+  constructor(app) {
+    this.app = app;
+    this.resources = {};
+    this.loadResources = 0;
+  }
+
+  getResources(imgs, callBack) {
+    if (this.loadResources !== 0) return;
+    // imgs is Array
+    this.loadResources = imgs.length;
+    for (let i in imgs) {
+      let a = i;
+      this.app.loader.add(imgs[a][0], imgs[a][1]).load((loader, resources) => {
+        this.resources[imgs[a][0]] = resources;
+        this.loadResources--;
+        if (this.loadResources === 0) callBack();
+      });
+    }
+  }
+
+  init(imgs) {
+    this.getResources(
+      imgs,
+      (() => {
+        this.start();
+      }).bind(this)
+    );
+  }
+
+  start() {}
+
+  render() {}
+}
