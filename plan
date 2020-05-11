@@ -1,0 +1,11 @@
+게임 클래스{
+    loading : 처음 로딩함수, 구글 광고 출력
+    init : 겟리소스 함수로 가져오고 콜백으로 시작함수 전달하기
+    getResources : 인자로 전달된 객체의 리소스 불러오기
+    start : 게임 시작함수
+    createSprite : 인자로 전달된 리소스 이름을 가지고 스프라이트 생성 두번째 인자로 설정 가능
+    deleteSprite : 스프라이트 삭제
+    hide : 스프라이트 숨기기
+    show : 스프라이트 보이기
+    enterKey : 
+}

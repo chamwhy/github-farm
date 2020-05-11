@@ -27,10 +27,13 @@ class Game {
   constructor(app) {
     this.app = app;
     this.resources = {};
+    this.sprites = {};
     this.loadResources = 0;
     this.isStart = false;
+    this.pause = false;
   }
 
+  /* background functions */
   getResources(imgs, callBack) {
     if (this.loadResources !== 0) return;
     // imgs is Array
@@ -66,7 +69,7 @@ class Game {
 
   render(resourceName) {
     if (!this.isStart) return;
-    const sua = new PIXI.Sprite(this.resources[resourceName].sua.texture);
+    const sua = new PIXI.Sprite(this.resources[resourceName].texture);
     sua.x = app.renderer.width / 2;
     sua.y = app.renderer.height / 2;
     sua.anchor.x = 0.5;
@@ -81,6 +84,30 @@ class Game {
       sua.rotation += 0.01;
     });
   }
+
+  /* game functions */
+  enterKey(keyCode) {}
+  pause(bool) {
+    this.pause = bool;
+  }
+
+  /* sprite functions */
+  createSprite(name, data) {}
+  deleteSprite(name) {
+    delete this.sprites[name];
+  }
+  setDelta(name, x, y) {
+    if (x !== null) {
+      this.sprites[name].x = x;
+    }
+    if (y !== null) {
+      this.sprites[name].y = y;
+    }
+  }
+  show(name) {}
+  hide(name) {}
+
+  setAnim(name, anim) {}
 }
 
 /* test codes */
